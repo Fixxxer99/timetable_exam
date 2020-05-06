@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="edmOrarendek.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="edmOrarendekStoreContainer">
+    <EntitySet Name="enTantargyak" EntityType="edmOrarendek.Store.enTantargyak" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="enOktatok" EntityType="edmOrarendek.Store.enOktatok" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="enTantermek" EntityType="edmOrarendek.Store.enTantermek" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="enBeadandok" EntityType="edmOrarendek.Store.enBeadandok" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="enTanorak" EntityType="edmOrarendek.Store.enTanorak" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="enOktatoenTantargy" EntityType="edmOrarendek.Store.enOktatoenTantargy" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="enTantargyenBeadando" Association="edmOrarendek.Store.enTantargyenBeadando">
+      <End Role="enTantargy" EntitySet="enTantargyak" />
+      <End Role="enBeadando" EntitySet="enBeadandok" />
+    </AssociationSet>
+    <AssociationSet Name="FK_enOktatoenTantargy_enOktato" Association="edmOrarendek.Store.FK_enOktatoenTantargy_enOktato">
+      <End Role="enOktato" EntitySet="enOktatok" />
+      <End Role="enOktatoenTantargy" EntitySet="enOktatoenTantargy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_enOktatoenTantargy_enTantargy" Association="edmOrarendek.Store.FK_enOktatoenTantargy_enTantargy">
+      <End Role="enTantargy" EntitySet="enTantargyak" />
+      <End Role="enOktatoenTantargy" EntitySet="enOktatoenTantargy" />
+    </AssociationSet>
+    <AssociationSet Name="enTanteremenTanora" Association="edmOrarendek.Store.enTanteremenTanora">
+      <End Role="enTanterem" EntitySet="enTantermek" />
+      <End Role="enTanora" EntitySet="enTanorak" />
+    </AssociationSet>
+    <AssociationSet Name="enTantargyenTanora" Association="edmOrarendek.Store.enTantargyenTanora">
+      <End Role="enTantargy" EntitySet="enTantargyak" />
+      <End Role="enTanora" EntitySet="enTanorak" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="enTantargyak">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tantargy_neve" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="enOktatok">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Oktato_Neve" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="enTantermek">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tanterem_neve" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="enBeadandok">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Hatarido" Type="datetime" Nullable="false" />
+    <Property Name="Leírás" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tipus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="enTantargyak_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="enTanorak">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tanora_Kezdete" Type="datetime" Nullable="false" />
+    <Property Name="Hossza" Type="int" Nullable="false" />
+    <Property Name="enTantermek_Id" Type="int" Nullable="false" />
+    <Property Name="enTantargyak_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="enOktatoenTantargy">
+    <Key>
+      <PropertyRef Name="enOktatok_Id" />
+      <PropertyRef Name="enTantargyak_Id" />
+    </Key>
+    <Property Name="enOktatok_Id" Type="int" Nullable="false" />
+    <Property Name="enTantargyak_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="enTantargyenBeadando">
+    <End Role="enTantargy" Type="edmOrarendek.Store.enTantargyak" Multiplicity="1" />
+    <End Role="enBeadando" Type="edmOrarendek.Store.enBeadandok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enTantargy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="enBeadando">
+        <PropertyRef Name="enTantargyak_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="enTanteremenTanora">
+    <End Role="enTanterem" Type="edmOrarendek.Store.enTantermek" Multiplicity="1" />
+    <End Role="enTanora" Type="edmOrarendek.Store.enTanorak" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enTanterem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="enTanora">
+        <PropertyRef Name="enTantermek_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="enTantargyenTanora">
+    <End Role="enTantargy" Type="edmOrarendek.Store.enTantargyak" Multiplicity="1" />
+    <End Role="enTanora" Type="edmOrarendek.Store.enTanorak" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enTantargy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="enTanora">
+        <PropertyRef Name="enTantargyak_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_enOktatoenTantargy_enOktato">
+    <End Role="enOktato" Type="edmOrarendek.Store.enOktatok" Multiplicity="1" />
+    <End Role="enOktatoenTantargy" Type="edmOrarendek.Store.enOktatoenTantargy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="enOktato">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="enOktatoenTantargy">
+        <PropertyRef Name="enOktatok_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_enOktatoenTantargy_enTantargy">
+    <End Role="enOktatoenTantargy" Type="edmOrarendek.Store.enOktatoenTantargy" Multiplicity="*" />
+    <End Role="enTantargy" Type="edmOrarendek.Store.enTantargyak" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="enTantargy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="enOktatoenTantargy">
+        <PropertyRef Name="enTantargyak_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="edmOrarendek" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="cnOrarendek" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="enTantargyak" EntityType="edmOrarendek.enTantargy" />
+          <EntitySet Name="enOktatok" EntityType="edmOrarendek.enOktato" />
+          <EntitySet Name="enTantermek" EntityType="edmOrarendek.enTanterem" />
+          <EntitySet Name="enBeadandok" EntityType="edmOrarendek.enBeadando" />
+          <EntitySet Name="enTanorak" EntityType="edmOrarendek.enTanora" />
+          <AssociationSet Name="enTantargyenBeadando" Association="edmOrarendek.enTantargyenBeadando">
+            <End Role="enTantargy" EntitySet="enTantargyak" />
+            <End Role="enBeadando" EntitySet="enBeadandok" />
+          </AssociationSet>
+          <AssociationSet Name="enOktatoenTantargy" Association="edmOrarendek.enOktatoenTantargy">
+            <End Role="enOktato" EntitySet="enOktatok" />
+            <End Role="enTantargy" EntitySet="enTantargyak" />
+          </AssociationSet>
+          <AssociationSet Name="enTanteremenTanora" Association="edmOrarendek.enTanteremenTanora">
+            <End Role="enTanterem" EntitySet="enTantermek" />
+            <End Role="enTanora" EntitySet="enTanorak" />
+          </AssociationSet>
+          <AssociationSet Name="enTantargyenTanora" Association="edmOrarendek.enTantargyenTanora">
+            <End Role="enTantargy" EntitySet="enTantargyak" />
+            <End Role="enTanora" EntitySet="enTanorak" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="enTantargy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tantargy_neve" Type="String" Nullable="false" />
+          <NavigationProperty Name="enBeadando" Relationship="edmOrarendek.enTantargyenBeadando" FromRole="enTantargy" ToRole="enBeadando" />
+          <NavigationProperty Name="enOktatok" Relationship="edmOrarendek.enOktatoenTantargy" FromRole="enTantargy" ToRole="enOktato" />
+          <NavigationProperty Name="enTanora" Relationship="edmOrarendek.enTantargyenTanora" FromRole="enTantargy" ToRole="enTanora" />
+        </EntityType>
+        <EntityType Name="enOktato">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Oktato_Neve" Type="String" Nullable="false" />
+          <NavigationProperty Name="enTantargyak" Relationship="edmOrarendek.enOktatoenTantargy" FromRole="enOktato" ToRole="enTantargy" />
+        </EntityType>
+        <EntityType Name="enTanterem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tanterem_neve" Type="String" Nullable="false" />
+          <NavigationProperty Name="enTanora" Relationship="edmOrarendek.enTanteremenTanora" FromRole="enTanterem" ToRole="enTanora" />
+        </EntityType>
+        <EntityType Name="enBeadando">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hatarido" Type="DateTime" Nullable="false" />
+          <Property Name="Leírás" Type="String" Nullable="false" />
+          <Property Name="Tipus" Type="String" Nullable="false" />
+          <NavigationProperty Name="enTantargyak" Relationship="edmOrarendek.enTantargyenBeadando" FromRole="enBeadando" ToRole="enTantargy" />
+        </EntityType>
+        <EntityType Name="enTanora">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tanora_Kezdete" Type="DateTime" Nullable="false" />
+          <Property Name="Hossza" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="enTantermek" Relationship="edmOrarendek.enTanteremenTanora" FromRole="enTanora" ToRole="enTanterem" />
+          <NavigationProperty Name="enTantargyak" Relationship="edmOrarendek.enTantargyenTanora" FromRole="enTanora" ToRole="enTantargy" />
+        </EntityType>
+        <Association Name="enTantargyenBeadando">
+          <End Type="edmOrarendek.enTantargy" Role="enTantargy" Multiplicity="1" />
+          <End Type="edmOrarendek.enBeadando" Role="enBeadando" Multiplicity="*" />
+        </Association>
+        <Association Name="enOktatoenTantargy">
+          <End Type="edmOrarendek.enOktato" Role="enOktato" Multiplicity="*" />
+          <End Type="edmOrarendek.enTantargy" Role="enTantargy" Multiplicity="*" />
+        </Association>
+        <Association Name="enTanteremenTanora">
+          <End Type="edmOrarendek.enTanterem" Role="enTanterem" Multiplicity="1" />
+          <End Type="edmOrarendek.enTanora" Role="enTanora" Multiplicity="*" />
+        </Association>
+        <Association Name="enTantargyenTanora">
+          <End Type="edmOrarendek.enTantargy" Role="enTantargy" Multiplicity="1" />
+          <End Type="edmOrarendek.enTanora" Role="enTanora" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="edmOrarendekStoreContainer" CdmEntityContainer="cnOrarendek">
+    <EntitySetMapping Name="enTantargyak">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enTantargy)">
+        <MappingFragment StoreEntitySet="enTantargyak">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tantargy_neve" ColumnName="Tantargy_neve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enOktatok">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enOktato)">
+        <MappingFragment StoreEntitySet="enOktatok">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Oktato_Neve" ColumnName="Oktato_Neve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enTantermek">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enTanterem)">
+        <MappingFragment StoreEntitySet="enTantermek">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tanterem_neve" ColumnName="Tanterem_neve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enBeadandok">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enBeadando)">
+        <MappingFragment StoreEntitySet="enBeadandok">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Hatarido" ColumnName="Hatarido" />
+          <ScalarProperty Name="Leírás" ColumnName="Leírás" />
+          <ScalarProperty Name="Tipus" ColumnName="Tipus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enTanorak">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enTanora)">
+        <MappingFragment StoreEntitySet="enTanorak">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tanora_Kezdete" ColumnName="Tanora_Kezdete" />
+          <ScalarProperty Name="Hossza" ColumnName="Hossza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="enTantargyenBeadando" TypeName="edmOrarendek.enTantargyenBeadando" StoreEntitySet="enBeadandok">
+      <EndProperty Name="enTantargy">
+        <ScalarProperty Name="Id" ColumnName="enTantargyak_Id" />
+      </EndProperty>
+      <EndProperty Name="enBeadando">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enOktatoenTantargy" TypeName="edmOrarendek.enOktatoenTantargy" StoreEntitySet="enOktatoenTantargy">
+      <EndProperty Name="enOktato">
+        <ScalarProperty Name="Id" ColumnName="enOktatok_Id" />
+      </EndProperty>
+      <EndProperty Name="enTantargy">
+        <ScalarProperty Name="Id" ColumnName="enTantargyak_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enTanteremenTanora" TypeName="edmOrarendek.enTanteremenTanora" StoreEntitySet="enTanorak">
+      <EndProperty Name="enTanterem">
+        <ScalarProperty Name="Id" ColumnName="enTantermek_Id" />
+      </EndProperty>
+      <EndProperty Name="enTanora">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enTantargyenTanora" TypeName="edmOrarendek.enTantargyenTanora" StoreEntitySet="enTanorak">
+      <EndProperty Name="enTantargy">
+        <ScalarProperty Name="Id" ColumnName="enTantargyak_Id" />
+      </EndProperty>
+      <EndProperty Name="enTanora">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,23 @@
+﻿<Window x:Class="Orarend_WPF.Nevjegy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Orarend_WPF"
+        mc:Ignorable="d"
+       Title="Névjegy" Height="200" Width="400" WindowStartupLocation="CenterScreen" MinHeight="200" MinWidth="400" ResizeMode="CanMinimize">
+    <StackPanel Background="SkyBlue">
+        <Grid Height="150">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label FontSize="18" FontFamily="Century" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" >A programot Máthé Gergely  készítette</Label>
+            <Button x:Name="btGomb" Width="80" Height="40" Grid.Row="1" FontFamily="Century" Background="Black" Foreground="White" Click="BtGomb_Click"  Cursor="None">OK
+            </Button>
+        </Grid>
+    </StackPanel>
+</Window>

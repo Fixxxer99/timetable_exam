@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="edmOrarendekStoreContainer" CdmEntityContainer="cnOrarendek">
+    <EntitySetMapping Name="enTantargyak">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enTantargy)">
+        <MappingFragment StoreEntitySet="enTantargyak">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tantargy_neve" ColumnName="Tantargy_neve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enOktatok">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enOktato)">
+        <MappingFragment StoreEntitySet="enOktatok">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Oktato_Neve" ColumnName="Oktato_Neve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enTantermek">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enTanterem)">
+        <MappingFragment StoreEntitySet="enTantermek">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tanterem_neve" ColumnName="Tanterem_neve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enBeadandok">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enBeadando)">
+        <MappingFragment StoreEntitySet="enBeadandok">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Hatarido" ColumnName="Hatarido" />
+          <ScalarProperty Name="Leírás" ColumnName="Leírás" />
+          <ScalarProperty Name="Tipus" ColumnName="Tipus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enTanorak">
+      <EntityTypeMapping TypeName="IsTypeOf(edmOrarendek.enTanora)">
+        <MappingFragment StoreEntitySet="enTanorak">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tanora_Kezdete" ColumnName="Tanora_Kezdete" />
+          <ScalarProperty Name="Hossza" ColumnName="Hossza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="enTantargyenBeadando" TypeName="edmOrarendek.enTantargyenBeadando" StoreEntitySet="enBeadandok">
+      <EndProperty Name="enTantargy">
+        <ScalarProperty Name="Id" ColumnName="enTantargyak_Id" />
+      </EndProperty>
+      <EndProperty Name="enBeadando">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enOktatoenTantargy" TypeName="edmOrarendek.enOktatoenTantargy" StoreEntitySet="enOktatoenTantargy">
+      <EndProperty Name="enOktato">
+        <ScalarProperty Name="Id" ColumnName="enOktatok_Id" />
+      </EndProperty>
+      <EndProperty Name="enTantargy">
+        <ScalarProperty Name="Id" ColumnName="enTantargyak_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enTanteremenTanora" TypeName="edmOrarendek.enTanteremenTanora" StoreEntitySet="enTanorak">
+      <EndProperty Name="enTanterem">
+        <ScalarProperty Name="Id" ColumnName="enTantermek_Id" />
+      </EndProperty>
+      <EndProperty Name="enTanora">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="enTantargyenTanora" TypeName="edmOrarendek.enTantargyenTanora" StoreEntitySet="enTanorak">
+      <EndProperty Name="enTantargy">
+        <ScalarProperty Name="Id" ColumnName="enTantargyak_Id" />
+      </EndProperty>
+      <EndProperty Name="enTanora">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,63 @@
+﻿<Window x:Class="Orarend_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Orarend_WPF"
+        mc:Ignorable="d"
+        Title="Órarend Alkalmazás" Height="400" Width="650">
+    <StackPanel>
+                <!--Menü-->
+        <Menu>
+            <MenuItem x:Name="miFajl" Header="Fájl">
+                <MenuItem x:Name="miMentes" Header="Mentés" Click="MiMentes_Click"/>
+                <Separator/>
+                <MenuItem x:Name="miExportXml" Header="Adatok Exportálása(xml)" Click="MiExportXml_Click"/>
+                <MenuItem x:Name="miImportXml" Header="Adatok Importálása(xml)" Click="MiImportXml_Click"/>
+                <Separator/>
+                <MenuItem x:Name="miKilepes" Header="Kilépés" Click="MiKilepes_Click"/>
+                <Separator/>
+            </MenuItem>
+            <MenuItem x:Name="miLekerdezes" Header="Lekérdezés">
+                <MenuItem x:Name="miHetiOrarend" Header="Heti Órarend" Click="MiHetiOrarend_Click"/>
+                <MenuItem x:Name="miHazifeladatok" Header="Házi feladatok lekérdezése" Click="MiHazifeladatok_Click"/>
+                <MenuItem x:Name="miHetiFeladat" Header="Házi Feladatok darabszáma"/>
+
+            </MenuItem>
+
+            <MenuItem x:Name="miAdatfelvetelModositas" Header="Adatokfelvétel/Módosítás">
+                <MenuItem x:Name="miTantargyak" Header="Tantárgy felvitel" Click="MiTantargyak_Click"/>
+
+            </MenuItem>
+            <MenuItem x:Name="miKapcsolat" Header="Kapcsolat"  Cursor="Help" HorizontalAlignment="Right">
+                <MenuItem x:Name="miNevjegy" Header="Névjegy" Click="MiNevjegy_Click" >
+                    
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+            <!--AdatRács-->
+        <DataGrid x:Name="dgAdatracs" ItemsSource="{Binding}" Visibility="Hidden"/>
+        <!--Adatok lekérdezése-->
+        <Grid x:Name="grHelyseg" Visibility="Visible" Margin="0,10,0,0" DataContext="{Binding}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Házi feladat listázása az év adott napjára : " Grid.Row="0" Grid.Column="0" Margin="0,10,0,10"/>
+            <DatePicker Name="dp1" DisplayDate="2020-05-01" SelectedDateFormat="Long" Grid.Row="0" Grid.Column="1" Margin="0,10,0,10"></DatePicker>
+            <Label Content="Házi feladat listázása az év adott hetére : " Grid.Row="1" Grid.Column="0" Margin="0,10,0,10"/>
+            <DatePicker Name="dp2" DisplayDate="2020-05-01" SelectedDateFormat="Long" Grid.Row="1" Grid.Column="1" Margin="0,10,0,10"></DatePicker>
+            <Button Content="Összesített órarend listázása : " Grid.Row="2" Grid.Column="0" Margin="0,10,0,10" HorizontalAlignment="Center"/>
+            
+        </Grid>
+
+    </StackPanel>
+</Window>

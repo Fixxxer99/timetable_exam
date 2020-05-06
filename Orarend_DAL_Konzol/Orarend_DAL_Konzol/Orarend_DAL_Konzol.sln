@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orarend_DAL_Konzol", "Orarend_DAL_Konzol\Orarend_DAL_Konzol.csproj", "{A9F7FC1B-8B4D-41EE-AC77-98D2A526AFA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orarend_WPF", "Orarend_WPF\Orarend_WPF.csproj", "{2F5069CF-3E3F-49E3-B7FF-1624C0F9DA8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9F7FC1B-8B4D-41EE-AC77-98D2A526AFA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F7FC1B-8B4D-41EE-AC77-98D2A526AFA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F7FC1B-8B4D-41EE-AC77-98D2A526AFA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F7FC1B-8B4D-41EE-AC77-98D2A526AFA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F5069CF-3E3F-49E3-B7FF-1624C0F9DA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F5069CF-3E3F-49E3-B7FF-1624C0F9DA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F5069CF-3E3F-49E3-B7FF-1624C0F9DA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F5069CF-3E3F-49E3-B7FF-1624C0F9DA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24570888-007D-4F42-ADA7-F4CADC9DD13D}
+	EndGlobalSection
+EndGlobal

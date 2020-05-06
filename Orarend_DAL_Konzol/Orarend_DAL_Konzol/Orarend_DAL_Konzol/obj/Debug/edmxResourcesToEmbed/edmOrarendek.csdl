@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="edmOrarendek" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="cnOrarendek" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="enTantargyak" EntityType="edmOrarendek.enTantargy" />
+    <EntitySet Name="enOktatok" EntityType="edmOrarendek.enOktato" />
+    <EntitySet Name="enTantermek" EntityType="edmOrarendek.enTanterem" />
+    <EntitySet Name="enBeadandok" EntityType="edmOrarendek.enBeadando" />
+    <EntitySet Name="enTanorak" EntityType="edmOrarendek.enTanora" />
+    <AssociationSet Name="enTantargyenBeadando" Association="edmOrarendek.enTantargyenBeadando">
+      <End Role="enTantargy" EntitySet="enTantargyak" />
+      <End Role="enBeadando" EntitySet="enBeadandok" />
+    </AssociationSet>
+    <AssociationSet Name="enOktatoenTantargy" Association="edmOrarendek.enOktatoenTantargy">
+      <End Role="enOktato" EntitySet="enOktatok" />
+      <End Role="enTantargy" EntitySet="enTantargyak" />
+    </AssociationSet>
+    <AssociationSet Name="enTanteremenTanora" Association="edmOrarendek.enTanteremenTanora">
+      <End Role="enTanterem" EntitySet="enTantermek" />
+      <End Role="enTanora" EntitySet="enTanorak" />
+    </AssociationSet>
+    <AssociationSet Name="enTantargyenTanora" Association="edmOrarendek.enTantargyenTanora">
+      <End Role="enTantargy" EntitySet="enTantargyak" />
+      <End Role="enTanora" EntitySet="enTanorak" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="enTantargy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tantargy_neve" Type="String" Nullable="false" />
+    <NavigationProperty Name="enBeadando" Relationship="edmOrarendek.enTantargyenBeadando" FromRole="enTantargy" ToRole="enBeadando" />
+    <NavigationProperty Name="enOktatok" Relationship="edmOrarendek.enOktatoenTantargy" FromRole="enTantargy" ToRole="enOktato" />
+    <NavigationProperty Name="enTanora" Relationship="edmOrarendek.enTantargyenTanora" FromRole="enTantargy" ToRole="enTanora" />
+  </EntityType>
+  <EntityType Name="enOktato">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Oktato_Neve" Type="String" Nullable="false" />
+    <NavigationProperty Name="enTantargyak" Relationship="edmOrarendek.enOktatoenTantargy" FromRole="enOktato" ToRole="enTantargy" />
+  </EntityType>
+  <EntityType Name="enTanterem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tanterem_neve" Type="String" Nullable="false" />
+    <NavigationProperty Name="enTanora" Relationship="edmOrarendek.enTanteremenTanora" FromRole="enTanterem" ToRole="enTanora" />
+  </EntityType>
+  <EntityType Name="enBeadando">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Hatarido" Type="DateTime" Nullable="false" />
+    <Property Name="Leírás" Type="String" Nullable="false" />
+    <Property Name="Tipus" Type="String" Nullable="false" />
+    <NavigationProperty Name="enTantargyak" Relationship="edmOrarendek.enTantargyenBeadando" FromRole="enBeadando" ToRole="enTantargy" />
+  </EntityType>
+  <EntityType Name="enTanora">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tanora_Kezdete" Type="DateTime" Nullable="false" />
+    <Property Name="Hossza" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="enTantermek" Relationship="edmOrarendek.enTanteremenTanora" FromRole="enTanora" ToRole="enTanterem" />
+    <NavigationProperty Name="enTantargyak" Relationship="edmOrarendek.enTantargyenTanora" FromRole="enTanora" ToRole="enTantargy" />
+  </EntityType>
+  <Association Name="enTantargyenBeadando">
+    <End Type="edmOrarendek.enTantargy" Role="enTantargy" Multiplicity="1" />
+    <End Type="edmOrarendek.enBeadando" Role="enBeadando" Multiplicity="*" />
+  </Association>
+  <Association Name="enOktatoenTantargy">
+    <End Type="edmOrarendek.enOktato" Role="enOktato" Multiplicity="*" />
+    <End Type="edmOrarendek.enTantargy" Role="enTantargy" Multiplicity="*" />
+  </Association>
+  <Association Name="enTanteremenTanora">
+    <End Type="edmOrarendek.enTanterem" Role="enTanterem" Multiplicity="1" />
+    <End Type="edmOrarendek.enTanora" Role="enTanora" Multiplicity="*" />
+  </Association>
+  <Association Name="enTantargyenTanora">
+    <End Type="edmOrarendek.enTantargy" Role="enTantargy" Multiplicity="1" />
+    <End Type="edmOrarendek.enTanora" Role="enTanora" Multiplicity="*" />
+  </Association>
+</Schema>
