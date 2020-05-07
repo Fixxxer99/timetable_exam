@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/06/2020 22:53:52
--- Generated from EDMX file: D:\Training\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\edmOrarendek.edmx
+-- Date Created: 05/07/2020 23:00:55
+-- Generated from EDMX file: D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\edmOrarendek.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [D:\Training\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DB.mdf];
+USE [D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DB.mdf];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO

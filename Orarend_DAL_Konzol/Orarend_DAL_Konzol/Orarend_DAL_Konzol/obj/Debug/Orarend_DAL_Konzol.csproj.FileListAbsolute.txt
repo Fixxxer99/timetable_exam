@@ -22,3 +22,15 @@ D:\Training\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.c
 D:\Training\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.csproj.CopyComplete
 D:\Training\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.dll
 D:\Training\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.pdb
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\bin\Debug\Orarend_DAL_Konzol.dll.config
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\bin\Debug\Orarend_DAL_Konzol.dll
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\bin\Debug\Orarend_DAL_Konzol.pdb
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\bin\Debug\EntityFramework.dll
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\bin\Debug\EntityFramework.SqlServer.dll
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\bin\Debug\EntityFramework.xml
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\bin\Debug\EntityFramework.SqlServer.xml
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.csprojAssemblyReference.cache
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.csproj.CoreCompileInputs.cache
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.csproj.CopyComplete
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.dll
+D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\obj\Debug\Orarend_DAL_Konzol.pdb
