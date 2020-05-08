@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,14 +24,20 @@ namespace Orarend_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private cnOrarendek orarendek;
+        public cnOrarendek orarendek;
+        public cnLogin login;
+        SqlConnection sqlconn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Training\timetable_exam\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DAL_Konzol\Orarend_DB.mdf;Integrated Security=True;Connect Timeout=30");
+
+
         public MainWindow()
         {
-            
+
             InitializeComponent();
             orarendek = new cnOrarendek();
-            
-           
+            login = new cnLogin();
+
+
+
         }
 
         private void MiMentes_Click(object sender, RoutedEventArgs e)
@@ -68,12 +76,15 @@ namespace Orarend_WPF
 
         private void MiTantargyak_Click(object sender, RoutedEventArgs e)
         {
-
+            frmAdatfelvitel adatfelvitel = new frmAdatfelvitel();
+            adatfelvitel.ShowDialog();
+            MainWindow main = new MainWindow();
+            main.Visibility = Visibility.Hidden;
         }
 
         private void MiExportXml_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void MiImportXml_Click(object sender, RoutedEventArgs e)
@@ -88,11 +99,31 @@ namespace Orarend_WPF
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        {   
             frmLogin login = new frmLogin();
             login.ShowDialog();
+            
             MainWindow main = new MainWindow();
             main.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            dgAdatracs.Visibility = Visibility.Visible;
+            var lekerdez = new List<Tantargyak>();
+            foreach (var x in orarendek.enTantargyak)
+            {
+                lekerdez.Add(new Tantargyak()
+                {
+                    Tantargy = x.Tantargy_neve,
+                   
+
+
+
+                });
+
+            }
+            dgAdatracs.ItemsSource = lekerdez;
         }
     }
 }
